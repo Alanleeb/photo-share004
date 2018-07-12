@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Header, Segment, Form, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { handleLogin } from '../reducers/user';
+import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   state = { email: '', password: '' };
@@ -23,8 +25,9 @@ class Login extends Component {
     return (
       <Segment basic>
         <Header as='h1' textAlign='center'>Login</Header>
+        <StyledLink as="h2" to="/" >LOGO </StyledLink>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Field>
+          <Form.Field textAlign='center' width='500px'>
             <label htmlFor='email'>Email</label>
             <input
               required
@@ -45,13 +48,24 @@ class Login extends Component {
               onChange={this.handleChange}
             />
           </Form.Field>
+          <StyledLink as="h2" to="/register" > Register </StyledLink>
           <Segment textAlign='center' basic>
             <Button primary type='submit'>Submit</Button>
           </Segment>
         </Form>
+        
       </Segment>
     );
   }
 }
+
+const StyledLink = styled(Link)`
+  color: black;
+  display: flex;
+  font-size: 25px;
+  justify-content: center;
+  font-weight: bold;
+  font-family: Courier, monospace;
+`
 
 export default connect()(Login);

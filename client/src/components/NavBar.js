@@ -3,6 +3,7 @@ import { Menu } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../reducers/user';
+import styled from 'styled-components'
 
 class NavBar extends Component {
   rightNavs = () => {
@@ -20,6 +21,9 @@ class NavBar extends Component {
     }
     return (
       <Menu.Menu position='right'>
+       <Link to='/package'>
+          <Menu.Item name='Packages' />
+        </Link>
         <Link to='/register'>
           <Menu.Item name='Register' />
         </Link>
@@ -34,9 +38,7 @@ class NavBar extends Component {
     return (
       <div>
         <Menu pointing secondary>
-          <Link to='/'>
-            <Menu.Item name='home' />
-          </Link>
+        <StyledLink to="/" > LOGO </StyledLink>
           { this.rightNavs() }
         </Menu>
       </div>
@@ -47,5 +49,12 @@ class NavBar extends Component {
 const mapStateToProps = state => {
   return { user: state.user };
 };
+
+const StyledLink = styled(Link)`
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: Courier, monospace;
+`
 
 export default withRouter(connect(mapStateToProps)(NavBar));

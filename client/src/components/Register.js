@@ -3,6 +3,8 @@ import { Header, Form, Button, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { registerUser } from '../reducers/user';
 import { setFlash } from '../reducers/flash';
+import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
   state = { email: '', password: '', passwordConfirmation: '' };
@@ -27,6 +29,7 @@ class Register extends Component {
     return (
       <Segment basic>
         <Header as='h1' textAlign='center'>Register Component</Header>
+        <StyledLink as="h2" to="/" > LOGO </StyledLink>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label htmlFor='email'>Email</label>
@@ -60,6 +63,7 @@ class Register extends Component {
               onChange={this.handleChange}
             />
           </Form.Field>
+          <StyledLink as="h2" to="/login" > Login </StyledLink>
           <Segment basic textAlign='center'>
             <Button type='submit'>Submit</Button>
           </Segment>
@@ -68,5 +72,14 @@ class Register extends Component {
     );
   }
 }
+
+const StyledLink = styled(Link)`
+  color: black;
+  display: flex;
+  font-size: 25px;
+  justify-content: center;
+  font-weight: bold;
+  font-family: Courier, monospace;
+`
 
 export default connect()(Register);
