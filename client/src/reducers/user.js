@@ -65,7 +65,7 @@ export const handleLogin = (user, history) => {
         const { data: { data: user }, headers } = res;
         dispatch(setHeaders(headers));
         dispatch(login(user));
-        history.push('/');
+        history.push('/adminHome');
       })
       .catch(res => {
         let errors = res.response.data.errors ? res.response.data.errors : ['Something went wrong']

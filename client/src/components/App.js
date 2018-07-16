@@ -10,6 +10,7 @@ import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import PaymentPackage from './PaymentPackage';
+import AdminHome from './AdminHome';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
         <FetchUser>
           <Switch>
             <Route exact path='/' component={Home} />
+            <ProtectedRoute exect path='/adminHome' component={AdminHome} />
             <Route exact path='/package' component={PaymentPackage} />
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
